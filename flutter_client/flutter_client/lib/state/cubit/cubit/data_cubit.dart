@@ -29,6 +29,7 @@ class DataCubit extends Cubit<DataState> {
         var data = FinancialRecord.fromJson(x);
         records.add(data);
       }
+      emit(SuccessState(records));
       return records;
     } on DioError catch (e) {
       emit(ErrorState(e.response!.data['message']));
