@@ -35,48 +35,6 @@ class _MainDataPage extends State<MainDataPage> {
               key: _key,
               child: Column(
                 children: [
-                  FutureBuilder(
-                      future: context.read<DataCubit>().getData(model),
-                      builder: (context, snapshot) {
-                        List<Widget> childrenVal = <Widget>[];
-                        if (snapshot.hasData) {
-                          childrenVal = <Widget>[
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                for (int i = 0; i < snapshot.data!.length; i++)
-                                  Column(
-                                    children: [
-                                      Text(
-                                          "id: ${snapshot.data?.elementAt(i).id}",
-                                          style: const TextStyle(fontSize: 18)),
-                                      Text(
-                                          "Имя: ${snapshot.data?.elementAt(i).operationName}",
-                                          style: const TextStyle(fontSize: 18)),
-                                      Text(
-                                          "Категория: ${snapshot.data?.elementAt(i).category}",
-                                          style: const TextStyle(fontSize: 18)),
-                                      Text(
-                                          "Дата создания: ${snapshot.data?.elementAt(i).date}",
-                                          style: const TextStyle(fontSize: 18)),
-                                      Text(
-                                          "Статус: ${snapshot.data?.elementAt(i).description}",
-                                          style: const TextStyle(fontSize: 18)),
-                                      Text(
-                                          "Сумма: ${snapshot.data?.elementAt(i).sum}",
-                                          style: const TextStyle(fontSize: 18)),
-                                    ],
-                                  )
-                              ],
-                            ),
-                          ];
-                        }
-                        return Center(
-                            child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: childrenVal,
-                        ));
-                      }),
                   TextField(
                     decoration: const InputDecoration(
                         labelText: "Введите id для удаления записи"),
@@ -206,6 +164,48 @@ class _MainDataPage extends State<MainDataPage> {
                       ),
                     ),
                   ),
+                  FutureBuilder(
+                      future: context.read<DataCubit>().getData(model),
+                      builder: (context, snapshot) {
+                        List<Widget> childrenVal = <Widget>[];
+                        if (snapshot.hasData) {
+                          childrenVal = <Widget>[
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                for (int i = 0; i < snapshot.data!.length; i++)
+                                  Column(
+                                    children: [
+                                      Text(
+                                          "id: ${snapshot.data?.elementAt(i).id}",
+                                          style: const TextStyle(fontSize: 18)),
+                                      Text(
+                                          "Имя: ${snapshot.data?.elementAt(i).operationName}",
+                                          style: const TextStyle(fontSize: 18)),
+                                      Text(
+                                          "Категория: ${snapshot.data?.elementAt(i).category}",
+                                          style: const TextStyle(fontSize: 18)),
+                                      Text(
+                                          "Дата создания: ${snapshot.data?.elementAt(i).date}",
+                                          style: const TextStyle(fontSize: 18)),
+                                      Text(
+                                          "Статус: ${snapshot.data?.elementAt(i).description}",
+                                          style: const TextStyle(fontSize: 18)),
+                                      Text(
+                                          "Сумма: ${snapshot.data?.elementAt(i).sum}",
+                                          style: const TextStyle(fontSize: 18)),
+                                    ],
+                                  )
+                              ],
+                            ),
+                          ];
+                        }
+                        return Center(
+                            child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: childrenVal,
+                        ));
+                      }),
                 ],
               ),
             ),

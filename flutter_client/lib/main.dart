@@ -22,8 +22,21 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        brightness: Brightness.dark,
+        progressIndicatorTheme: const ProgressIndicatorThemeData(
+          color: Colors.indigo,
+        ),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          backgroundColor: Colors.indigo,
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            textStyle: const TextStyle(color: Colors.white),
+            backgroundColor: Colors.indigo,
+          ),
+        ),
       ),
+      themeMode: ThemeMode.dark,
       initialRoute: log,
       onGenerateRoute: router.generateRouter,
     );
@@ -133,31 +146,6 @@ class _Login extends State<Login> {
                     ],
                   );
                 },
-              ))),
-    );
-  }
-}
-
-class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
-
-  @override
-  State<MainPage> createState() => _MainPage();
-}
-
-class _MainPage extends State<MainPage> {
-  final GlobalKey<FormState> _key = GlobalKey();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-          child: Form(
-              key: _key,
-              child: Column(
-                children: const [
-                  Text('CONGRATS'),
-                ],
               ))),
     );
   }
